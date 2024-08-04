@@ -1,0 +1,60 @@
+class grade_tracker:
+    def grade_info(self):
+        self.marks=[]
+        self.subject=int(input("how many subjects do you have? "))
+        self.grade_info=dict()
+        for i in range(self.subject):
+            sub_name=input(f"enter name of subject {i+1}: ")
+            sub_mark=float(input(f"grade in subject {i+1}: "))
+            self.grade_info[sub_name]=sub_mark
+        #print(self.grade_info)
+        for i in self.grade_info.values():
+            self.marks.append(i)
+        return self.marks
+    
+    def avg_grade(self,t):
+        total=0
+        count=len(t)
+        for i in t:
+            total+=i
+        # print(total)
+        # print(count)
+        return total/count
+    
+    def overall_grade(self,a):
+        if a >= 90 and a<=100:
+            return 'A+'
+        elif a >= 80 and a<70:
+            return 'A' 
+        elif a >= 70 and a<80:
+            return 'B'
+        elif a >= 60 and a<70:
+            return 'C'
+        elif a >= 50:
+            return 'D'
+        else:
+            return 'F'
+        
+    def gpa(self, a):
+        if a >= 90 and a<=100:
+            return 4.0
+        elif a >= 80 and a<70:
+            return 3.7
+        elif a >= 70 and a<80:
+            return 3
+        elif a >= 60 and a<70:
+            return 2.0
+        elif a >= 50:
+            return 1.0
+        else:
+            return 0.0
+        
+if _name=='main_':
+    g=grade_tracker()
+    total_marks=g.grade_info()
+    average_garde=g.avg_grade(total_marks)
+    over_grade=g.overall_grade(average_garde)
+    gpa_calc=g.gpa(average_garde)
+    print(f"average grade:{average_garde}")
+    print(f"letter grade:{over_grade}")
+    print(f"gpa:{gpa_calc}")
